@@ -52,6 +52,8 @@
         nvidia,pmu-boardid = "3448";
 
 	chosen {
+		nvidia,tegra-porg-sku;
+		nvidia,tegra-always-on-personality;
 		bootargs = "androidboot.secureos=tlk earlycon=uart8250,mmio32,0x70006000";
 	};
 
