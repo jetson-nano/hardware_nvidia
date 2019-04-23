@@ -50,13 +50,34 @@
         nvidia,boardids = "3448";
         nvidia,proc-boardid = "3448";
         nvidia,pmu-boardid = "3448";
-	nvidia,fastboot-usb-pid = <0xb442>;
 
 	chosen {
-		nvidia,tegra-porg-sku;
-		stdout-path = "/serial@70006000";
-		nvidia,tegra-always-on-personality;
-		bootargs = "kmemleak=on earlycon=uart8250,mmio32,0x70006000";
+		bootargs = "androidboot.secureos=tlk earlycon=uart8250,mmio32,0x70006000";
+	};
+
+
+	firmware {
+		android {
+			compatible = "android,firmware";
+			first_stage_delay = "1";
+			fstab {
+				compatible = "android,fstab";
+				system {
+					compatible = "android,system";
+					dev = "/dev/block/platform/sdhci-tegra.0/by-name/APP";
+					type = "ext4";
+					mnt_flags = "ro,noatime";
+					fsmgr_flags = "wait";
+				};
+				vendor {
+					compatible = "android,vendor";
+					dev = "/dev/block/platform/sdhci-tegra.0/by-name/vendor";
+					type = "ext4";
+					mnt_flags = "ro,noatime";
+					fsmgr_flags = "wait";
+				};
+			};
+		};
 	};
 
 	rollback-protection {
@@ -70,6 +91,263 @@
 	tegra_wdt: watchdog@60005100 {
 		status = "disabled";
 	};
+
+	bcmdhd_wlan {
+		fw_path = "/vendor/firmware/fw_bcmdhd.bin";
+		nv_path = "/vendor/firmware/nvram_jetson_e_4356.txt";
+		tuned_nv_path = "/vendor/firmware/nvram_jetson_e_antenna_tuned_4356.txt";
+		clm_blob_path = "/vendor/firmware/bcmdhd_clm_foster.blob";
+		builtin-roam-disabled;
+		country_code_map {
+			CC_XV {
+				iso_abbrev = "XV";
+				custom_locale = "XX";
+				custom_locale_rev = <0>;
+			};
+			CC_US {
+				iso_abbrev = "US";
+				custom_locale = "Q2";
+				custom_locale_rev = <0>;
+			};
+			CC_CA {
+				iso_abbrev = "CA";
+				custom_locale = "Q2";
+				custom_locale_rev = <0>;
+			};
+			CC_SG {
+				iso_abbrev = "SG";
+				custom_locale = "Q2";
+				custom_locale_rev = <0>;
+			};
+
+			CC_AT {
+				iso_abbrev = "AT";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_BE {
+				iso_abbrev = "BE";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_BG {
+				iso_abbrev = "BG";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_HR {
+				iso_abbrev = "HR";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_CY {
+				iso_abbrev = "CY";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_CZ {
+				iso_abbrev = "CZ";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_DK {
+				iso_abbrev = "DK";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_EE {
+				iso_abbrev = "EE";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_FI {
+				iso_abbrev = "FI";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_FR {
+				iso_abbrev = "FR";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_DE {
+				iso_abbrev = "DE";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_GR {
+				iso_abbrev = "GR";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_HU {
+				iso_abbrev = "HU";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_IS {
+				iso_abbrev = "IS";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_IE {
+				iso_abbrev = "IE";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_IT {
+				iso_abbrev = "IT";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_LV {
+				iso_abbrev = "LV";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_LI {
+				iso_abbrev = "LI";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_LT {
+				iso_abbrev = "LT";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_LU {
+				iso_abbrev = "LU";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_MT {
+				iso_abbrev = "MT";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_NL {
+				iso_abbrev = "NL";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_NO {
+				iso_abbrev = "NO";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_PL {
+				iso_abbrev = "PL";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_PT {
+				iso_abbrev = "PT";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_RO {
+				iso_abbrev = "RO";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_SK {
+				iso_abbrev = "SK";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_SI {
+				iso_abbrev = "SI";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_ES {
+				iso_abbrev = "ES";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_SE {
+				iso_abbrev = "SE";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_CH {
+				iso_abbrev = "CH";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_TR {
+				iso_abbrev = "TR";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_GB {
+				iso_abbrev = "GB";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_EU {
+				iso_abbrev = "EU";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_E0 {
+				iso_abbrev = "E0";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_AP {
+				iso_abbrev = "AP";
+				custom_locale = "XV";
+				custom_locale_rev = <0>;
+			};
+			CC_RU {
+				iso_abbrev = "RU";
+				custom_locale = "RU";
+				custom_locale_rev = <0>;
+			};
+			CC_AU {
+				iso_abbrev = "AU";
+				custom_locale = "AU";
+				custom_locale_rev = <0>;
+			};
+			CC_NZ {
+				iso_abbrev = "NZ";
+				custom_locale = "AU";
+				custom_locale_rev = <0>;
+			};
+			CC_JP {
+				iso_abbrev = "JP";
+				custom_locale = "JP";
+				custom_locale_rev = <0>;
+			};
+			CC_KR {
+				iso_abbrev = "KR";
+				custom_locale = "KR";
+				custom_locale_rev = <0>;
+			};
+			CC_TW {
+				iso_abbrev = "TW";
+				custom_locale = "TW";
+				custom_locale_rev = <0>;
+			};
+			CC_CN {
+				iso_abbrev = "CN";
+				custom_locale = "CN";
+				custom_locale_rev = <0>;
+			};
+			CC_HK {
+				iso_abbrev = "HK";
+				custom_locale = "E0";
+				custom_locale_rev = <0>;
+			};
+			CC_IN {
+				iso_abbrev = "IN";
+				custom_locale = "IN";
+				custom_locale_rev = <0>;
+			};
+		};
+	};
+
 
 	host1x {
 		/* Camera unit clocks */

@@ -26,7 +26,7 @@
 	model = "jetson-nano";
 	compatible = "nvidia,jetson-nano", "nvidia,tegra210";
 	nvidia,dtsfilename = __FILE__;
-	nvidia,fastboot-usb-pid = <0xb421>;
+	nvidia,fastboot-usb-pid = <0xb442>;
 		spi@70410000 {
 			status = "okay";
 			spiflash@0 {
@@ -41,25 +41,9 @@
 	firmware {
 		android {
 			compatible = "android,firmware";
-			first_stage_delay = "1";
-			fstab {
-				compatible = "android,fstab";
-				system {
-					compatible = "android,system";
-					dev = "/dev/block/platform/sdhci-tegra.0/by-name/APP";
-					type = "ext4";
-					mnt_flags = "ro,noatime";
-					fsmgr_flags = "wait";
-				};
-				vendor {
-					compatible = "android,vendor";
-					dev = "/dev/block/platform/sdhci-tegra.0/by-name/vendor";
-					type = "ext4";
-					mnt_flags = "ro,noatime";
-					fsmgr_flags = "wait";
-				};
-			};
+			hardware = "foster_e";
 		};
 	};
+
 
 };
